@@ -1,0 +1,391 @@
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: white;
+  background-color: #242424;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  --accent: 59, 130, 246;
+  --text-nav: 17, 24, 39;
+}
+
+#root {
+  margin: 0 auto;
+  text-align: center;
+  width: 100%;
+}
+
+nav {
+  background-color: white;
+  display: flex;
+  justify-content: space-evenly;
+  width: 100%;
+  padding: 0 2%;
+  display: flex;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  font-size: 1.25em;
+  color: black;
+  box-sizing: border-box;
+}
+
+nav button:hover {
+  background-color: rgba(var(--accent), .10);
+  border-color: rgba(var(--accent), .25);
+}
+
+nav button:active {
+  transform: translateY(10px);
+}
+
+nav button:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(var(--accent), .35);
+  border-color: rgba(var(--accent), .45);
+}
+
+.nav-buttons {
+  display: flex;
+  width: 50%;
+  justify-content: space-evenly;
+}
+
+.name-div {
+  width: 50%;
+  display: flex;
+  align-items: flex-start;
+  font-weight: 600;
+}
+
+nav button {
+  color: black;
+  background-color: transparent;
+  padding: 1% 6%;
+  border-radius: 0.4em;
+  border: 1px solid transparent;
+  font-size: 1em;
+  cursor: pointer;
+  transition:
+    background-color .2s ease,
+    border-color .2s ease,
+    box-shadow .2s ease,
+    color .2s ease,
+    transform .08s ease;
+}
+
+
+a {
+  font-weight: 500;
+  color: #646cff;
+  text-decoration: inherit;
+}
+
+a:hover {
+  color: #535bf2;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  min-width: 320px;
+  min-height: 100vh;
+  width: 100%;
+}
+
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+}
+
+.mail {
+  height: 100px;
+}
+
+main {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+  padding: 12.5% 10%;
+  font-size: 24px;
+  background-color: white;
+  color: black;
+  margin: 0;
+}
+
+#headshot {
+  border-radius: 50%;
+}
+
+.resume {
+  text-decoration: none;
+  color: black;
+  padding: 10%;
+  background-color: white;
+  border-radius: 0.4em;
+  font-size: 24px;
+}
+
+.cta {
+  display: flex;
+  align-items: center;    
+  gap: 0.75rem;            
+  margin-top: 1rem;
+  flex-wrap: wrap;       
+}
+
+
+.mail {
+  height: 100px;
+  width: auto;
+  display: block;
+}
+
+.left {
+  text-align: left;
+  width: 70%;
+}
+
+.right {
+  width: 30%;
+}
+
+.about-me {
+  display: flex;
+  flex-direction: column;
+  background-color: #f9f9f9;
+  color: black;
+  text-align: left;
+  padding: 10%;
+  font-size: 24px;
+  color: #242526;
+  padding-bottom: 2.5%;
+  padding-top: 5%;
+}
+
+.about-me h1 {
+  text-align: center;
+  color: black;
+}
+
+.about-me h2 {
+  color: black;
+}
+
+.technologies {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); /* Adjust the column size */
+  gap: 1rem; /* Add space between items */
+  justify-content: center; /* Center items horizontally */
+  background-color: #f9f9f9;
+}
+
+.items {
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  background-color: #ffffff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  margin: 2%;
+  padding-right: 20%;
+  padding-left: 5%;
+  padding-top: 2%;
+  padding-bottom: 2%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.items:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.items img {
+  width: 50%;
+  margin-right: 10px;
+}
+
+
+.projects {
+  padding: 4rem 2rem;
+  padding-top: 5%;
+  padding-bottom: 2.5%;
+  background-color: #f7f7f7; /* Light background for contrast */
+  text-align: center;
+  font-size: 1.6em;
+}
+
+.projects h1 {
+  color: #333;
+  margin-bottom: 0.5rem;
+}
+
+.projects h2 {
+  color: #333;
+  margin-bottom: 2rem;
+  text-align: left;
+  padding-left: 10%;
+}
+
+.card p {
+  text-align: left;
+}
+
+h1 {
+  margin: 0;
+  text-align: center;
+}
+
+main h1 {
+  text-align: left;
+}
+
+.proj-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 1.5rem;
+  justify-content: center;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.card {
+  background: #ffffff;
+  border-radius: 0.8em;
+  box-shadow: 0 0.4em 0.4em rgba(0, 0, 0, 0.1);
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+
+.card a {
+  color: #1a73e8;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.card a:hover {
+  cursor: pointer;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0.8em 1.6em rgba(0, 0, 0, 0.15);
+}
+
+.projects h2 {
+  margin: 2%;
+}
+
+textarea {
+  resize: none;
+  background-color: white;
+  color: black;
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  border-radius: 0.25em;
+  padding: 1%;
+}
+
+.contact {
+  font-size: 1.6em;
+  padding: 10%;
+  padding-top: 5%;
+  padding-bottom: 5%;
+  text-align: left;
+  background-color: white;
+  color: black;
+  
+}
+
+.contact textarea {
+  width: 60%;
+  font-size: 0.6em;
+}
+
+.card-content p {
+  color: #555;
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.code-btn {
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 0.5rem 1rem;
+  background-color: #1a73e8;
+  color: white !important;
+  font-size: 1rem;
+  font-weight: bold;
+  border-radius: 0.5em;
+  text-decoration: none;
+  transition: background 0.3s;
+}
+
+.code-btn:hover {
+  background-color: #135bb8;
+}
+
+.private-source {
+  display: block;
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  font-weight: bold;
+  color: #888;
+  text-align: center;
+}
+
+.card-content h3 {
+  font-size: 1.4rem;
+  color: #1a73e8; /* Blue accent for project titles */
+  margin-bottom: 0.5rem;
+}
+
+.last {
+  display: flex;
+  justify-content: space-evenly;
+  width: 50%;
+  margin: 2%;
+}
+
+a {
+  cursor: pointer;
+  padding: 2%;
+}
+
+footer {
+  color: black;
+  background-color: #f7f7f7;
+  padding: 1%;
+}
+
+.bruh {
+  height: 15%;
+}
+
+.bruh:hover {
+  background-color: #135bb8;
+}
+
+input {
+  resize: none;
+  background-color: white;
+  color: black;
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  border-radius: 0.25em;
+  padding: 1%;
+  width: 60%;
+  font-size: 0.6em;
+}
