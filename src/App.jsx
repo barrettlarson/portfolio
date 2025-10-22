@@ -5,6 +5,32 @@ function App() {
     document.getElementById(id).scrollIntoView({ behavior: 'smooth'});
   };
 
+  const ctrlImages = ["/images/ctrl-main.png", "/images/ctrl-checkout.png", "/images/ctrl-stripe.png"];
+  let ctrlIndex = 0;
+
+  const swipeLeft = () => {
+    ctrlIndex = (ctrlIndex - 1 + ctrlImages.length) % ctrlImages.length;
+    document.querySelector('.project-photo-ctrl').src = ctrlImages[ctrlIndex];
+  };
+
+  const swipeRight = () => {
+    ctrlIndex = (ctrlIndex + 1) % ctrlImages.length;
+    document.querySelector('.project-photo-ctrl').src = ctrlImages[ctrlIndex];
+  }
+
+  const todoImages = ["/images/todo-main.png","/images/todo-important.png", "/images/todo-login.png"];
+  let todoIndex = 0;
+
+  const swipeLeftTodo = () => {
+    todoIndex = (todoIndex - 1 + todoImages.length) % todoImages.length;
+    document.querySelector('.project-photo-todo').src = todoImages[todoIndex];
+  };
+
+  const swipeRightTodo = () => {
+    todoIndex = (todoIndex + 1 + todoImages.length) % todoImages.length;
+    document.querySelector('.project-photo-todo').src = todoImages[todoIndex];
+  }
+
   return (
     <>
       <nav>
@@ -30,7 +56,7 @@ function App() {
           </div>
         </div>
         <div className="right">
-          <img id="headshot" src="src/images/headshot.jpg" alt="Headshot" />
+          <img id="headshot" src="/images/headshot.jpg" alt="Headshot" />
         </div>
       </main>
       <div className="about-me" id="about-me">
@@ -114,18 +140,27 @@ function App() {
             <div className="card-content">
               <h3>CtrlAltSwap</h3>
               <p>A full-stack e-commerce platform for buying used computer parts and accessories.</p>
-              <img src="images/ctrl-main.png" alt="CtrlAltSwap Main Page Screenshot" />
+              <div className='project-images'>
+                <img className="arrow" onClick={swipeLeft} src="/images/left-arrow.png" alt="Left Arrow" />
+                <img className="project-photo-ctrl"src="/images/ctrl-main.png" alt="CtrlAltSwap project image" />
+                <img className="arrow" onClick={swipeRight} src="/images/right-arrow.png" alt="Right Arrow" />
+              </div>
               <p><strong>Tech Stack: </strong>React.js, Express.js, MongoDB, Node.js, Jest</p>
             </div>
-              <a href="https://github.com/barrettlarson/ctrl-alt-swap" className='code-btn'>View Code &lt;/&gt;</a>
+              <a href="https://github.com/barrettlarson/ctrl-alt-swap" className='code-btn'>View On GitHub</a>
           </div>
           <div className="card">
             <div className="card-content">
               <h3>Ultimate Todo</h3>
               <p>A full-stack todo application that supports user-specific todo CRUD operations.</p>
+              <div className='project-images'>
+                <img className="arrow" onClick={swipeLeftTodo} src="/images/left-arrow.png" alt="Left Arrow" />
+                <img className="project-photo-todo"src="/images/todo-main.png" alt="Todo project image" />
+                <img className="arrow" onClick={swipeRightTodo} src="/images/right-arrow.png" alt="Right Arrow" />
+              </div>
               <p><strong>Tech Stack: </strong>React.js, Express.js, MongoDB, Node.js, Jest</p>
             </div>
-              <a href="https://github.com/barrettlarson/fullstack-todo" className='code-btn'>View Code &lt;/&gt;</a>
+              <a href="https://github.com/barrettlarson/fullstack-todo" className='code-btn'>View On GitHub</a>
           </div>
         </div>
       </div>

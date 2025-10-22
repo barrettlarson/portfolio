@@ -331,23 +331,54 @@ textarea {
   color: #555;
   font-size: 1rem;
   margin-bottom: 0.5rem;
+  text-align: center;
+}
+
+.project-images {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.arrow {
+  width: 40px;
+  height: auto;
+  opacity: 0.5;
+  cursor: pointer;
 }
 
 .code-btn {
-  display: inline-block;
-  margin-top: 1rem;
-  padding: 0.5rem 1rem;
-  background-color: #1a73e8;
-  color: white !important;
-  font-size: 1rem;
-  font-weight: bold;
-  border-radius: 0.5em;
+  align-self: center;
+  width: 20%;
   text-decoration: none;
-  transition: background 0.3s;
+  color: black;
+  padding: 1% 6%;
+  background-color: white;
+  border-radius: 0.4em;
+  font-size: 24px;
+  cursor: pointer;
+  transition:
+    background-color .2s ease,
+    border-color .2s ease,
+    box-shadow .2s ease,
+    color .2s ease,
+    transform .08s ease;
 }
 
 .code-btn:hover {
-  background-color: #135bb8;
+  background-color: rgba(var(--accent), .10);
+  border-color: rgba(var(--accent), .25);
+}
+
+.code-btn:active {
+  transform: translateY(10px);
+}
+
+.code-btn:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(var(--accent), .35);
+  border-color: rgba(var(--accent), .45);
 }
 
 .private-source {
@@ -360,7 +391,7 @@ textarea {
 }
 
 .card-content h3 {
-  font-size: 1.4rem;
+  font-size: 1.8rem;
   color: #1a73e8; /* Blue accent for project titles */
   margin-bottom: 0.5rem;
 }
@@ -377,18 +408,11 @@ a {
   padding: 2%;
 }
 
-footer {
-  color: black;
-  background-color: #f7f7f7;
-  padding: 1%;
-}
-
-.bruh {
-  height: 15%;
-}
-
-.bruh:hover {
-  background-color: #135bb8;
+.project-photo-todo, .project-photo-ctrl {
+  width: 100%;
+  border-radius: 0.5em;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
 }
 
 input {
