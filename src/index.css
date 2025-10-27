@@ -39,8 +39,8 @@ nav {
 }
 
 nav button:hover {
-  background-color: rgba(var(--accent), .10);
-  border-color: rgba(var(--accent), .25);
+  background-color: rgba(var(--accent), 0.1);
+  border-color: rgba(var(--accent), 0.25);
 }
 
 nav button:active {
@@ -49,8 +49,8 @@ nav button:active {
 
 nav button:focus-visible {
   outline: none;
-  box-shadow: 0 0 0 3px rgba(var(--accent), .35);
-  border-color: rgba(var(--accent), .45);
+  box-shadow: 0 0 0 3px rgba(var(--accent), 0.35);
+  border-color: rgba(var(--accent), 0.45);
 }
 
 .nav-buttons {
@@ -74,12 +74,8 @@ nav button {
   border: 1px solid transparent;
   font-size: 1em;
   cursor: pointer;
-  transition:
-    background-color .2s ease,
-    border-color .2s ease,
-    box-shadow .2s ease,
-    color .2s ease,
-    transform .08s ease;
+  transition: background-color 0.2s ease, border-color 0.2s ease,
+    box-shadow 0.2s ease, color 0.2s ease, transform 0.08s ease;
 }
 
 body {
@@ -100,7 +96,6 @@ h1 {
 }
 
 .linkedin {
-
   height: 60px;
   cursor: pointer;
 }
@@ -135,17 +130,13 @@ main {
   border-radius: 0.4em;
   font-size: 24px;
   cursor: pointer;
-  transition:
-    background-color .2s ease,
-    border-color .2s ease,
-    box-shadow .2s ease,
-    color .2s ease,
-    transform .08s ease;
+  transition: background-color 0.2s ease, border-color 0.2s ease,
+    box-shadow 0.2s ease, color 0.2s ease, transform 0.08s ease;
 }
 
 .resume-btn:hover {
-  background-color: rgba(var(--accent), .10);
-  border-color: rgba(var(--accent), .25);
+  background-color: rgba(var(--accent), 0.1);
+  border-color: rgba(var(--accent), 0.25);
 }
 
 .resume-btn:active {
@@ -154,18 +145,17 @@ main {
 
 .resume-btn:focus-visible {
   outline: none;
-  box-shadow: 0 0 0 3px rgba(var(--accent), .35);
-  border-color: rgba(var(--accent), .45);
+  box-shadow: 0 0 0 3px rgba(var(--accent), 0.35);
+  border-color: rgba(var(--accent), 0.45);
 }
 
 .cta {
   display: flex;
-  align-items: center;    
-  gap: 0.75rem;            
+  align-items: center;
+  gap: 0.75rem;
   margin-top: 1rem;
-  flex-wrap: wrap;       
+  flex-wrap: wrap;
 }
-
 
 .mail {
   height: 100px;
@@ -207,9 +197,12 @@ main {
 
 .technologies {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); /* Adjust the column size */
-  gap: 1rem; /* Add space between items */
-  justify-content: center; /* Center items horizontally */
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(220px, 1fr)
+  ); 
+  gap: 1rem;
+  justify-content: center;
   background-color: #f9f9f9;
 }
 
@@ -238,7 +231,6 @@ main {
   width: 50%;
   margin-right: 10px;
 }
-
 
 .projects {
   padding: 4rem 2rem;
@@ -294,7 +286,6 @@ main h1 {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-
 .card a {
   color: #1a73e8;
   text-decoration: none;
@@ -331,7 +322,6 @@ textarea {
   text-align: left;
   background-color: white;
   color: black;
-  
 }
 
 .contact textarea {
@@ -370,17 +360,13 @@ textarea {
   border-radius: 0.4em;
   font-size: 24px;
   cursor: pointer;
-  transition:
-    background-color .2s ease,
-    border-color .2s ease,
-    box-shadow .2s ease,
-    color .2s ease,
-    transform .08s ease;
+  transition: background-color 0.2s ease, border-color 0.2s ease,
+    box-shadow 0.2s ease, color 0.2s ease, transform 0.08s ease;
 }
 
 .code-btn:hover {
-  background-color: rgba(var(--accent), .10);
-  border-color: rgba(var(--accent), .25);
+  background-color: rgba(var(--accent), 0.1);
+  border-color: rgba(var(--accent), 0.25);
 }
 
 .code-btn:active {
@@ -389,8 +375,8 @@ textarea {
 
 .code-btn:focus-visible {
   outline: none;
-  box-shadow: 0 0 0 3px rgba(var(--accent), .35);
-  border-color: rgba(var(--accent), .45);
+  box-shadow: 0 0 0 3px rgba(var(--accent), 0.35);
+  border-color: rgba(var(--accent), 0.45);
 }
 
 .private-source {
@@ -404,7 +390,7 @@ textarea {
 
 .card-content h3 {
   font-size: 1.8rem;
-  color: #1a73e8; /* Blue accent for project titles */
+  color: #1a73e8; 
   margin-bottom: 0.5rem;
 }
 
@@ -420,7 +406,8 @@ a {
   padding: 2%;
 }
 
-.project-photo-todo, .project-photo-ctrl {
+.project-photo-todo,
+.project-photo-ctrl {
   width: 100%;
   border-radius: 0.5em;
   margin-top: 1rem;
@@ -453,4 +440,163 @@ input {
 
 .interests h2 {
   text-align: left;
+}
+
+@media (max-width: 768px) {
+  nav {
+    display: none;
+  }
+
+  main {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "title"
+      "photo"
+      "desc"
+      "cta";
+    row-gap: 0.9rem;
+    padding: 14% 6% 10%;
+    text-align: left;
+  }
+
+  .left,
+  .right {
+    display: contents;
+  }
+
+  main h1 {
+    grid-area: title;
+    font-size: 2.4rem;
+    justify-self: center;
+  }
+  .home {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    text-align: center;
+  }
+
+  #headshot {
+    grid-area: photo;
+    width: 200px;
+    max-width: 60vw;
+    border-radius: 50%;
+    justify-self: center;
+  }
+
+  .left {
+    text-align: center;
+  }
+
+  .cta {
+    grid-area: cta;
+    justify-self: center;
+    justify-content: center;
+    align-items: center;
+    gap: 0.6rem;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap; 
+  }
+
+  .resume-btn {
+    font-size: 1rem;
+    padding: 0.7rem 1rem;
+  }
+
+  .mail,
+  .linkedin,
+  .github {
+    display: inline-block;
+    vertical-align: middle;
+  }
+
+  .mail {
+    height: 64px;
+  }
+
+  .linkedin {
+    height: 36px;
+  }
+
+  .github {
+    height: 40px;
+    margin-left: 8px;
+  }
+
+  .about-me,
+  .interests {
+    padding: 12% 6%;
+    font-size: 1rem;
+  }
+
+  .technologies {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.6rem;
+  }
+  .items {
+    margin: 0.25rem;
+    padding: 0.6rem 0.8rem;
+  }
+  .items img {
+    width: 34px;
+  }
+
+  .projects {
+    padding: 12% 6% 8%;
+    font-size: 1.05em;
+  }
+  .projects h2 {
+    padding-left: 0;
+    text-align: left;
+  }
+
+  .proj-grid {
+    gap: 1rem;
+    margin: 0;
+  }
+
+  .card {
+    padding: 1rem;
+  }
+  .card-content h3 {
+    font-size: 1.25rem;
+  }
+  .card-content p {
+    font-size: 0.95rem;
+  }
+
+  .project-images {
+    gap: 0.5rem;
+  }
+  .arrow {
+    width: 28px;
+    opacity: 0.6;
+  }
+
+  .project-photo-todo,
+  .project-photo-ctrl {
+    border-radius: 0.4rem;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .code-btn {
+    width: 100%;
+    font-size: 1rem;
+    padding: 0.7rem 1rem;
+  }
+
+  input,
+  textarea {
+    width: 100%;
+    font-size: 1rem;
+  }
+
+  .contact {
+    font-size: 1.05em;
+    padding: 10% 6%;
+  }
 }

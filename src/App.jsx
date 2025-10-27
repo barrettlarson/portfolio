@@ -63,7 +63,7 @@ function App() {
           <div className="cta">
             <a
               className="resume-btn"
-              href="src/BarrettLarsonResume2025.pdf"
+              href="/BarrettLarsonResume2025.pdf"
               download
             >
               Resume
