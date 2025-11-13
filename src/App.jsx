@@ -270,7 +270,7 @@ function App() {
       <div className="interests" id="interests">
         <h1>Interests</h1>
         <h2>A few things I enjoy outside of coding</h2>
-        <div className="technologies">
+        <div className="hobbies">
           <div className="items">
             <img src="/images/swimming.png"></img>
             <p>Swimming</p>

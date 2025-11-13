@@ -195,7 +195,7 @@ main {
   color: black;
 }
 
-.technologies {
+.technologies, .hobbies {
   display: grid;
   grid-template-columns: repeat(
     auto-fit,
