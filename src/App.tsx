@@ -1,8 +1,12 @@
+import { useState } from "react";
 import "./index.css";
 
 function App() {
+  const [menuOpen, setMenuOpen] = useState(false);
+
   const scrollToSection = (id: string): void => {
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+    setMenuOpen(false);
   };
 
   const ctrlImages: string[] = [
@@ -35,15 +39,29 @@ function App() {
           <button onClick={() => scrollToSection("about-me")}>About</button>
           <button onClick={() => scrollToSection("experience")}>Experience</button>
           <button onClick={() => scrollToSection("projects")}>Projects</button>
-          <button onClick={() => scrollToSection("interests")}>
-            Interests
-          </button>
+          <button onClick={() => scrollToSection("interests")}>Interests</button>
         </div>
+        <button
+          className="hamburger"
+          onClick={() => setMenuOpen(!menuOpen)}
+          aria-label="Toggle navigation"
+        >
+          {menuOpen ? "✕" : "☰"}
+        </button>
       </nav>
+      {menuOpen && (
+        <div className="mobile-menu">
+          <button onClick={() => scrollToSection("home")}>Home</button>
+          <button onClick={() => scrollToSection("about-me")}>About</button>
+          <button onClick={() => scrollToSection("experience")}>Experience</button>
+          <button onClick={() => scrollToSection("projects")}>Projects</button>
+          <button onClick={() => scrollToSection("interests")}>Interests</button>
+        </div>
+      )}
       <main id="home">
         <div className="left">
           <h1>Hi, I'm Barrett.👋</h1>
-          <p>
+          <p className="hero-subtitle">
             CS @ Virginia Tech | SWE Intern @ Expedition Technology
           </p>
           <div className="cta">
@@ -214,17 +232,10 @@ function App() {
               <span className="exp-date">May 2025 – Aug 2025</span>
             </div>
             <ul className="carfax-bullets">
-              <li>Developed and deployed an AWS Lambda function that queried Salesforce and published results to respective AWS SNS topics.
-              </li>
-              <li>Upgraded Java/Spring Boot codebases, resolving runtime-breaking issues
-                and addressing security vulnerabilities.
-              </li>
-              <li>Refactored legacy Node.js Lambda functions into Python,
-                and improved reliability with pytest-based unit tests.
-              </li>
-              <li>
-                Automated infrastructure using AWS CloudFormation and implemented CI/CD pipelines using GitLab CI/CD.
-              </li>
+              <li>Developed and deployed an AWS Lambda function that queried Salesforce and published results to respective AWS SNS topics.</li>
+              <li>Upgraded Java/Spring Boot codebases, resolving runtime-breaking issues and addressing security vulnerabilities.</li>
+              <li>Refactored legacy Node.js Lambda functions into Python, and improved reliability with pytest-based unit tests.</li>
+              <li>Automated infrastructure using AWS CloudFormation and implemented CI/CD pipelines using GitLab CI/CD.</li>
             </ul>
             <div className="exp-tags">
               <span className="tag">Java</span>
@@ -284,11 +295,11 @@ function App() {
         <h2>A few things I enjoy outside of coding</h2>
         <div className="hobbies">
           <div className="items">
-            <img src="/images/swimming.png"></img>
+            <img src="/images/swimming.png" />
             <p>Swimming</p>
           </div>
           <div className="items">
-            <img src="/images/weightlifting.png"/>
+            <img src="/images/weightlifting.png" />
             <p>Weightlifting</p>
           </div>
           <div className="items">
@@ -317,6 +328,9 @@ function App() {
           </div>
         </div>
       </div>
+      <footer>
+        <p>© 2026 Barrett Larson · Built with React</p>
+      </footer>
     </>
   );
 }
