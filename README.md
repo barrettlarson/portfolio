@@ -1,12 +1,41 @@
-<<<<<<< HEAD
-# portfolio
-=======
-# React + Vite
+# Barrett Larson — Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Personal portfolio website showcasing my experience, projects, and background as a Computer Science student at Virginia Tech.
 
-Currently, two official plugins are available:
+## Tech Stack
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
->>>>>>> origin/master
+- **React 18** + **TypeScript** — UI and type safety
+- **Vite** — build tool and dev server
+- **CSS3** — custom responsive styling, no UI framework
+
+## Getting Started
+
+```bash
+npm install
+npm run dev
+```
+
+Open [http://localhost:5173](http://localhost:5173) in your browser.
+
+## Scripts
+
+| Script | Description |
+|--------|-------------|
+| `npm run dev` | Start dev server with HMR |
+| `npm run build` | Type-check and produce a production build |
+| `npm run typecheck` | Run the TypeScript compiler without emitting |
+| `npm run lint` | Run ESLint |
+| `npm run preview` | Serve the production build locally |
+
+## Project Structure
+
+```
+src/
+├── App.tsx        # Single-page app component
+├── main.tsx       # React entry point
+└── index.css      # Global and component styles
+
+public/
+├── images/        # Static images and icons
+└── BarrettLarsonResume2025.pdf
+```

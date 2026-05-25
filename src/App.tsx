@@ -1,42 +1,27 @@
 import "./index.css";
 
 function App() {
-  const scrollToSection = (id) => {
-    document.getElementById(id).scrollIntoView({ behavior: "smooth" });
+  const scrollToSection = (id: string): void => {
+    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
   };
 
-  const ctrlImages = [
+  const ctrlImages: string[] = [
     "/images/ctrl-main.png",
     "/images/ctrl-checkout.png",
     "/images/ctrl-stripe.png",
   ];
   let ctrlIndex = 0;
 
-  const swipeLeft = () => {
+  const swipeLeft = (): void => {
     ctrlIndex = (ctrlIndex - 1 + ctrlImages.length) % ctrlImages.length;
-    document.querySelector(".project-photo-ctrl").src = ctrlImages[ctrlIndex];
+    (document.querySelector(".project-photo-ctrl") as HTMLImageElement).src =
+      ctrlImages[ctrlIndex];
   };
 
-  const swipeRight = () => {
+  const swipeRight = (): void => {
     ctrlIndex = (ctrlIndex + 1) % ctrlImages.length;
-    document.querySelector(".project-photo-ctrl").src = ctrlImages[ctrlIndex];
-  };
-
-  const todoImages = [
-    "/images/todo-main.png",
-    "/images/todo-important.png",
-    "/images/todo-login.png",
-  ];
-  let todoIndex = 0;
-
-  const swipeLeftTodo = () => {
-    todoIndex = (todoIndex - 1 + todoImages.length) % todoImages.length;
-    document.querySelector(".project-photo-todo").src = todoImages[todoIndex];
-  };
-
-  const swipeRightTodo = () => {
-    todoIndex = (todoIndex + 1 + todoImages.length) % todoImages.length;
-    document.querySelector(".project-photo-todo").src = todoImages[todoIndex];
+    (document.querySelector(".project-photo-ctrl") as HTMLImageElement).src =
+      ctrlImages[ctrlIndex];
   };
 
   return (
@@ -48,6 +33,7 @@ function App() {
         <div className="nav-buttons">
           <button onClick={() => scrollToSection("home")}>Home</button>
           <button onClick={() => scrollToSection("about-me")}>About</button>
+          <button onClick={() => scrollToSection("experience")}>Experience</button>
           <button onClick={() => scrollToSection("projects")}>Projects</button>
           <button onClick={() => scrollToSection("interests")}>
             Interests
@@ -68,7 +54,7 @@ function App() {
             >
               Resume
             </a>
-            <a href="mailto:cbarrettl.jr@gmail.com" arai-label="Email Me">
+            <a href="mailto:cbarrettl.jr@gmail.com" aria-label="Email Me">
               <img
                 className="mail"
                 src="https://icons.veryicon.com/png/o/business/oa-office/mail-227.png"
@@ -86,7 +72,7 @@ function App() {
                 )
               }
             />
-            <img 
+            <img
               className="github"
               src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg"
               alt="GitHub Logo"
@@ -106,10 +92,10 @@ function App() {
         <p>
           I'm Barrett Larson, a rising senior studying Computer Science at Virginia
           Tech. I'm passionate about building full-stack web applications that
-          are both functional and intuitive. I’ve always enjoyed the challenge
-          of solving complex problems through code. Whether I’m debugging a
+          are both functional and intuitive. I've always enjoyed the challenge
+          of solving complex problems through code. Whether I'm debugging a
           tricky algorithm, designing a database schema, or deploying a web app
-          to the cloud, I’m driven by the process of turning ideas into
+          to the cloud, I'm driven by the process of turning ideas into
           meaningful, working software that people can actually use.
         </p>
         <h2>Technologies and Tools</h2>
@@ -191,7 +177,58 @@ function App() {
             <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-original-wordmark.svg" />
             <p>Docker</p>
           </div>
-          
+        </div>
+      </div>
+      <div className="experience" id="experience">
+        <h1>Experience</h1>
+        <h2>Where I've worked</h2>
+        <div className="exp-list">
+          <div className="exp-card">
+            <div className="exp-header">
+              <div className="exp-title">
+                <h3>Software Engineer Intern</h3>
+                <span className="exp-company">Expedition Technology</span>
+              </div>
+              <span className="exp-date">May 2026 – Present</span>
+            </div>
+            <ul className="exp-bullets">
+              <li>Implementing backend and full-stack features for Solis, a storefront platform for buying and selling AI training data.</li>
+              <li>Developing a collaborative annotation editor prototype using WebSockets and FastAPI.</li>
+            </ul>
+            <div className="exp-tags">
+              <span className="tag">Python</span>
+              <span className="tag">FastAPI</span>
+              <span className="tag">WebSockets</span>
+            </div>
+          </div>
+          <div className="exp-card">
+            <div className="exp-header">
+              <div className="exp-title">
+                <h3>Software Developer Intern</h3>
+                <span className="exp-company">CARFAX</span>
+              </div>
+              <span className="exp-date">May 2025 – Aug 2025</span>
+            </div>
+            <ul className="carfax-bullets">
+              <li>Developed and deployed an AWS Lambda function that queried Salesforce and published results to respective AWS SNS topics.
+              </li>
+              <li>Upgraded Java/Spring Boot codebases, resolving runtime-breaking issues
+                and addressing security vulnerabilities.
+              </li>
+              <li>Refactored legacy Node.js Lambda functions into Python,
+                and improved reliability with pytest-based unit tests.
+              </li>
+              <li>
+                Automated infrastructure using AWS CloudFormation and implemented CI/CD pipelines using GitLab CI/CD.
+              </li>
+            </ul>
+            <div className="exp-tags">
+              <span className="tag">Java</span>
+              <span className="tag">Spring Boot</span>
+              <span className="tag">AWS Lambda</span>
+              <span className="tag">Python</span>
+            </div>
+          </div>
         </div>
       </div>
       <div className="projects" id="projects">
