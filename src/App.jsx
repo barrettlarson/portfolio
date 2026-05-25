@@ -58,7 +58,7 @@ function App() {
         <div className="left">
           <h1>Hi, I'm Barrett.👋</h1>
           <p>
-            CS @ Virginia Tech 🦃 | Prev Software Developer Intern at CARFAX 🦊
+            CS @ Virginia Tech | SWE Intern @ Expedition Technology
           </p>
           <div className="cta">
             <a
@@ -104,7 +104,7 @@ function App() {
         <h1>About Me</h1>
         <h2>A bit about me</h2>
         <p>
-          I'm Barrett Larson, a junior studying Computer Science at Virginia
+          I'm Barrett Larson, a rising senior studying Computer Science at Virginia
           Tech. I'm passionate about building full-stack web applications that
           are both functional and intuitive. I’ve always enjoyed the challenge
           of solving complex problems through code. Whether I’m debugging a
@@ -120,16 +120,24 @@ function App() {
         </p>
         <div className="technologies">
           <div className="items">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original-wordmark.svg" />
+            <p>Python</p>
+          </div>
+          <div className="items">
             <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-original-wordmark.svg" />
             <p>Java</p>
+          </div>
+          <div className="items">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg" />
+            <p>TypeScript</p>
           </div>
           <div className="items">
             <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg" />
             <p>JavaScript</p>
           </div>
           <div className="items">
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original-wordmark.svg" />
-            <p>Python</p>
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/fastapi/fastapi-original.svg" />
+            <p>FastAPI</p>
           </div>
           <div className="items">
             <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original-wordmark.svg" />
@@ -160,18 +168,6 @@ function App() {
             <p>CSS3</p>
           </div>
           <div className="items">
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/junit/junit-original-wordmark.svg" />
-            <p>JUnit</p>
-          </div>
-          <div className="items">
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/pytest/pytest-original-wordmark.svg" />
-            <p>pytest</p>
-          </div>
-          <div className="items">
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/jest/jest-plain.svg" />
-            <p>jest</p>
-          </div>
-          <div className="items">
             <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original-wordmark.svg" />
             <p>Git</p>
           </div>
@@ -180,9 +176,22 @@ function App() {
             <p>AWS</p>
           </div>
           <div className="items">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/gitlab/gitlab-original.svg" />
+            <p>GitLab CI/CD</p>
+          </div>
+          <div className="items">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/flask/flask-original.svg" />
+            <p>Flask</p>
+          </div>
+          <div className="items">
             <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/spring/spring-original-wordmark.svg" />
             <p>Spring Boot</p>
           </div>
+          <div className="items">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-original-wordmark.svg" />
+            <p>Docker</p>
+          </div>
+          
         </div>
       </div>
       <div className="projects" id="projects">
@@ -227,44 +236,6 @@ function App() {
               View On GitHub
             </a>
           </div>
-          <div className="card">
-            <div className="card-content">
-              <h3>Ultimate Todo</h3>
-              <p>
-                A full-stack todo application that supports user-specific todo
-                CRUD operations.
-              </p>
-              <div className="project-images">
-                <img
-                  className="arrow"
-                  onClick={swipeLeftTodo}
-                  src="/images/left-arrow.png"
-                  alt="Left Arrow"
-                />
-                <img
-                  className="project-photo-todo"
-                  src="/images/todo-main.png"
-                  alt="Todo project image"
-                />
-                <img
-                  className="arrow"
-                  onClick={swipeRightTodo}
-                  src="/images/right-arrow.png"
-                  alt="Right Arrow"
-                />
-              </div>
-              <p>
-                <strong>Tech Stack: </strong>React.js, Express.js, MongoDB,
-                Node.js, Jest
-              </p>
-            </div>
-            <a
-              href="https://github.com/barrettlarson/fullstack-todo"
-              className="code-btn"
-            >
-              View On GitHub
-            </a>
-          </div>
         </div>
       </div>
       <div className="interests" id="interests">
@@ -303,10 +274,9 @@ function App() {
             <img src="/images/wheat.png" />
             <p>Catan</p>
           </div>
-      </div>
+        </div>
       </div>
     </>
-
   );
 }
 
