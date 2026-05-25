@@ -52,12 +52,16 @@ function App() {
               href="/BarrettLarsonResume2025.pdf"
               download
             >
-              Resume
+              <img
+                className="resume"
+                src="images/resume.png"
+                alt="My Resume"
+              />
             </a>
             <a href="mailto:cbarrettl.jr@gmail.com" aria-label="Email Me">
               <img
                 className="mail"
-                src="https://icons.veryicon.com/png/o/business/oa-office/mail-227.png"
+                src="images/gmail.png"
                 alt="Email Barrett"
               />
             </a>

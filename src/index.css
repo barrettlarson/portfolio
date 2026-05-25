@@ -91,19 +91,20 @@ h1 {
   line-height: 1.1;
 }
 
-.mail {
-  height: 100px;
-}
-
 .linkedin {
-  height: 60px;
+  height: 44px;
   cursor: pointer;
 }
 
 .github {
-  margin-left: 25px;
-  height: 70px;
+  height: 44px;
   cursor: pointer;
+}
+
+.resume {
+  height: 44px;
+  padding: 0;
+  margin: 0;
 }
 
 main {
@@ -157,8 +158,14 @@ main {
   flex-wrap: wrap;
 }
 
+.cta a {
+  padding: 0;
+  display: flex;
+  align-items: center;
+}
+
 .mail {
-  height: 100px;
+  height: 44px;
   width: auto;
   display: block;
   cursor: pointer;
@@ -617,17 +624,11 @@ input {
     vertical-align: middle;
   }
 
-  .mail {
-    height: 64px;
-  }
-
-  .linkedin {
+  .mail,
+  .linkedin,
+  .github,
+  .resume {
     height: 36px;
-  }
-
-  .github {
-    height: 40px;
-    margin-left: 8px;
   }
 
   .about-me,
