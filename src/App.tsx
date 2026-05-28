@@ -317,10 +317,7 @@ function App() {
         <h1>Interests</h1>
         <h2>A few things I enjoy outside of coding</h2>
         <div className="hobbies">
-          <div className="items">
-            <img src="/images/swimming.png" />
-            <p>Swimming</p>
-          </div>
+
           <div className="items">
             <img src="/images/weightlifting.png" />
             <p>Weightlifting</p>
@@ -330,9 +327,18 @@ function App() {
             <p>Chess</p>
           </div>
           <div className="items">
-            <img src="/images/guitar.png" />
-            <p>Guitar</p>
+            <img src="/images/piano.png" />
+            <p>Piano</p>
           </div>
+          <div className="items">
+            <img src="/images/disc-golf.png" />
+            <p>Disc Golf</p>
+          </div>
+          <div className="items">
+            <img src="/images/swimming.png" />
+            <p>Swimming</p>
+          </div>
+
           <div className="items">
             <img src="/images/dunk.png" />
             <p>Basketball</p>
@@ -346,8 +352,20 @@ function App() {
             <p>Reading</p>
           </div>
           <div className="items">
+            <img src="/images/game.png" />
+            <p>Golf</p>
+          </div>
+          <div className="items">
             <img src="/images/wheat.png" />
             <p>Catan</p>
+          </div>
+          <div className="items">
+            <img src="/images/guitar.png" />
+            <p>Guitar</p>
+          </div>
+          <div className="items">
+            <img src="/images/pickle.png" />
+            <p>Pickleball</p>
           </div>
         </div>
       </div>
