@@ -220,8 +220,8 @@ function App() {
             </div>
             <ul className="exp-bullets">
               <li>
-                Implementing backend and full-stack features for Solis, a
-                storefront platform for buying and selling AI training data.
+                Implementing frontend and backend features for a storefront
+                platform for buying and selling AI training data.
               </li>
               <li>
                 Developing a collaborative annotation editor prototype using
@@ -232,6 +232,7 @@ function App() {
               <span className="tag">Python</span>
               <span className="tag">FastAPI</span>
               <span className="tag">WebSockets</span>
+              <span className="tag">TypeScript</span>
             </div>
           </div>
           <div className="exp-card">
@@ -271,7 +272,7 @@ function App() {
       </div>
       <div className="projects" id="projects">
         <h1>Projects</h1>
-        <h2>What I built</h2>
+        <h2>What I've built</h2>
         <div className="proj-grid">
           <div className="card">
             <div className="card-content">
@@ -301,7 +302,7 @@ function App() {
               </div>
               <p>
                 <strong>Tech Stack: </strong>React.js, Express.js, MongoDB,
-                Node.js, Jest
+                Node.js
               </p>
             </div>
             <a
@@ -317,7 +318,6 @@ function App() {
         <h1>Interests</h1>
         <h2>A few things I enjoy outside of coding</h2>
         <div className="hobbies">
-
           <div className="items">
             <img src="/images/weightlifting.png" />
             <p>Weightlifting</p>

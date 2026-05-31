@@ -555,7 +555,7 @@ main h1 {
   margin-bottom: 1rem;
 }
 
-.code-btn {
+a.code-btn {
   align-self: center;
   text-decoration: none;
   color: white;
