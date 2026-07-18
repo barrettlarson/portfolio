@@ -154,7 +154,26 @@ a {
   padding: 0;
 }
 
-/* ── SECTION TITLE UNDERLINES ── */
+/* ── SECTION TITLES ── */
+
+.experience h2,
+.projects h2,
+.interests h2 {
+  color: #666;
+  font-size: 1.05rem;
+  font-weight: 500;
+  text-align: left;
+  margin-top: 0.4rem;
+  margin-bottom: 0;
+}
+
+.interests h2 {
+  margin-bottom: 1.5rem;
+}
+
+.projects h2 {
+  text-indent: 1em;
+}
 
 .about-me h1,
 .experience h1,
@@ -254,25 +273,11 @@ main h1 {
   opacity: 0.75;
 }
 
-.linkedin {
-  height: 44px;
-  cursor: pointer;
-}
-
-.github {
-  height: 44px;
-  cursor: pointer;
-}
-
-.resume {
-  height: 44px;
-  padding: 0;
-  margin: 0;
-}
-
+.linkedin,
+.github,
+.resume,
 .mail {
   height: 44px;
-  width: auto;
   display: block;
   cursor: pointer;
 }
@@ -358,15 +363,6 @@ main h1 {
   background-color: white;
   color: #242424;
   padding: 8% 10%;
-}
-
-.experience h2 {
-  color: #666;
-  font-size: 1.05rem;
-  font-weight: 500;
-  text-align: left;
-  margin-top: 0.4rem;
-  margin-bottom: 0;
 }
 
 .exp-list {
@@ -461,98 +457,85 @@ main h1 {
 /* ── PROJECTS ── */
 
 .projects {
-  padding: 8% 10%;
+  padding: 4% 5%;
   background-color: #eef4ff;
   text-align: center;
 }
 
-.projects h2 {
-  color: #666;
-  font-size: 1.05rem;
-  font-weight: 500;
-  text-align: left;
-  margin-top: 0.4rem;
-  margin-bottom: 2rem;
-}
-
-.proj-grid {
+.project {
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
   justify-content: center;
-  max-width: 900px;
-  margin: 0 auto;
+  align-items: center;
+  padding: 3rem 0;
 }
 
-.card {
-  background: #ffffff;
-  border-radius: 0.8em;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-  padding: 1.5rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
-}
-
-.card-content h3 {
-  font-size: 1.5rem;
+.project h3 {
+  font-size: 1.75rem;
   color: var(--accent-solid);
   margin-bottom: 0.5rem;
 }
 
-.card-content p {
+.project p {
   color: #555;
-  font-size: 0.95rem;
+  font-size: 1rem;
   margin-bottom: 0.5rem;
-  text-align: center;
   line-height: 1.65;
 }
 
-.card p {
-  text-align: left;
-}
-
-.card a {
-  color: var(--accent-solid);
-  text-decoration: none;
-  font-weight: bold;
-}
-
-.card a:hover {
-  cursor: pointer;
-}
-
-.project-images {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 1rem;
-}
-
-.arrow {
-  width: 36px;
-  height: auto;
-  opacity: 0.4;
-  cursor: pointer;
-  transition: opacity 0.15s ease;
-}
-
-.arrow:hover {
-  opacity: 0.75;
-}
-
-.project-photo-todo,
-.project-photo-ctrl {
+.carousel {
   width: 100%;
+  margin: 1rem 0;
+}
+
+.carousel-viewport {
+  overflow: hidden;
   border-radius: 0.5em;
+}
+
+.carousel-track {
+  display: flex;
+  touch-action: pan-y;
+  cursor: grab;
+}
+
+.carousel-track:active {
+  cursor: grabbing;
+}
+
+.carousel-track img {
+  width: 100%;
+  flex-shrink: 0;
+  display: block;
+  border-radius: 0.5em;
+  user-select: none;
+}
+
+.carousel-dots {
+  display: flex;
+  justify-content: center;
+  gap: 0.6rem;
   margin-top: 1rem;
-  margin-bottom: 1rem;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background: #c3d4f0;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.dot:hover {
+  transform: scale(1.25);
+}
+
+.dot.active {
+  background: var(--accent-solid);
 }
 
 a.code-btn {
@@ -581,6 +564,25 @@ a.code-btn {
   transform: translateY(2px);
 }
 
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background: rgba(0, 0, 0, 0.85);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  cursor: zoom-out;
+}
+
+.lightbox img {
+  max-width: 100%;
+  max-height: 100%;
+  border-radius: 0.5em;
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.5);
+}
+
 /* ── INTERESTS ── */
 
 .interests {
@@ -590,15 +592,6 @@ a.code-btn {
   color: #242526;
   text-align: left;
   padding: 8% 10%;
-}
-
-.interests h2 {
-  color: #666;
-  font-size: 1.05rem;
-  font-weight: 500;
-  text-align: left;
-  margin-top: 0.4rem;
-  margin-bottom: 1.5rem;
 }
 
 /* ── FOOTER ── */
@@ -615,62 +608,10 @@ footer p {
   margin: 0;
 }
 
-/* ── MISC ── */
-
-textarea {
-  resize: none;
-  background-color: white;
-  color: black;
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  border-radius: 0.25em;
-  padding: 1%;
-}
-
-.contact {
-  font-size: 1rem;
-  padding: 8% 10%;
-  text-align: left;
-  background-color: white;
-  color: black;
-}
-
-.contact textarea {
-  width: 60%;
-  font-size: 0.95rem;
-}
-
-.private-source {
-  display: block;
-  margin-top: 1rem;
-  font-size: 0.9rem;
-  font-weight: bold;
-  color: #888;
-  text-align: center;
-}
-
-.last {
-  display: flex;
-  justify-content: space-evenly;
-  width: 50%;
-  margin: 2%;
-}
-
-input {
-  resize: none;
-  background-color: white;
-  color: black;
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  border-radius: 0.25em;
-  padding: 1%;
-  width: 60%;
-  font-size: 0.95rem;
-}
-
 /* ── MOBILE ── */
 
 @media (max-width: 768px) {
   nav {
-    display: flex;
     padding: 0 5%;
   }
 
@@ -710,7 +651,6 @@ input {
     grid-area: photo;
     max-width: 200px;
     width: 60vw;
-    border-radius: 50%;
     justify-self: center;
   }
 
@@ -724,10 +664,7 @@ input {
     grid-area: cta;
     justify-self: center;
     justify-content: center;
-    align-items: center;
     gap: 0.6rem;
-    display: flex;
-    flex-direction: row;
     flex-wrap: nowrap;
   }
 
@@ -773,36 +710,27 @@ input {
     width: 32px;
   }
 
-  .projects h2 {
-    padding-left: 0;
+  .project {
+    min-height: auto;
+    padding: 2rem 0;
   }
 
-  .proj-grid {
-    gap: 1rem;
-    margin: 0;
-  }
-
-  .card {
-    padding: 1rem;
-  }
-
-  .card-content h3 {
+  .project h3 {
     font-size: 1.2rem;
   }
 
-  .project-images {
-    gap: 0.5rem;
+  .carousel {
+    margin: 0.5rem 0;
   }
 
-  .arrow {
-    width: 28px;
-  }
-
-  .project-photo-todo,
-  .project-photo-ctrl {
+  .carousel-viewport,
+  .carousel-track img {
     border-radius: 0.4rem;
-    margin-top: 0.5rem;
-    margin-bottom: 0.5rem;
+  }
+
+  .dot {
+    width: 8px;
+    height: 8px;
   }
 
   .code-btn {
@@ -810,15 +738,5 @@ input {
     font-size: 0.95rem;
     padding: 0.75rem 1rem;
     text-align: center;
-  }
-
-  input,
-  textarea {
-    width: 100%;
-    font-size: 1rem;
-  }
-
-  .contact {
-    padding: 10% 6%;
   }
 }

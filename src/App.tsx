@@ -1,32 +1,115 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./index.css";
+
+type ProjectImage = { src: string; alt: string };
+
+function ProjectCarousel({
+  images,
+  onImageClick,
+}: {
+  images: ProjectImage[];
+  onImageClick: (image: ProjectImage) => void;
+}) {
+  const [index, setIndex] = useState(0);
+  const [dragStart, setDragStart] = useState<number | null>(null);
+  const [dragOffset, setDragOffset] = useState(0);
+
+  const onPointerDown = (e: React.PointerEvent<HTMLDivElement>): void => {
+    setDragStart(e.clientX);
+    setDragOffset(0);
+    e.currentTarget.setPointerCapture(e.pointerId);
+  };
+
+  const onPointerMove = (e: React.PointerEvent<HTMLDivElement>): void => {
+    if (dragStart === null) return;
+    setDragOffset(e.clientX - dragStart);
+  };
+
+  const onPointerUp = (e: React.PointerEvent<HTMLDivElement>): void => {
+    if (dragStart === null) return;
+    const delta = e.clientX - dragStart;
+    if (delta < -50 && index < images.length - 1) {
+      setIndex(index + 1);
+    } else if (delta > 50 && index > 0) {
+      setIndex(index - 1);
+    } else if (Math.abs(delta) < 8) {
+      onImageClick(images[index]);
+    }
+    setDragStart(null);
+    setDragOffset(0);
+  };
+
+  return (
+    <div className="carousel">
+      <div className="carousel-viewport">
+        <div
+          className="carousel-track"
+          style={{
+            transform: `translateX(calc(${-index * 100}% + ${dragOffset}px))`,
+            transition: dragStart === null ? "transform 0.3s ease" : "none",
+          }}
+          onPointerDown={onPointerDown}
+          onPointerMove={onPointerMove}
+          onPointerUp={onPointerUp}
+          onPointerCancel={() => {
+            setDragStart(null);
+            setDragOffset(0);
+          }}
+        >
+          {images.map((image) => (
+            <img
+              key={image.src}
+              src={image.src}
+              alt={image.alt}
+              draggable={false}
+            />
+          ))}
+        </div>
+      </div>
+      <div className="carousel-dots">
+        {images.map((image, i) => (
+          <button
+            key={image.src}
+            className={i === index ? "dot active" : "dot"}
+            onClick={() => setIndex(i)}
+            aria-label={`Go to photo ${i + 1}`}
+          />
+        ))}
+      </div>
+    </div>
+  );
+}
 
 function App() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [fullscreenImage, setFullscreenImage] = useState<ProjectImage | null>(
+    null,
+  );
+
+  useEffect(() => {
+    if (!fullscreenImage) return;
+    const onKeyDown = (e: KeyboardEvent): void => {
+      if (e.key === "Escape") setFullscreenImage(null);
+    };
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
+  }, [fullscreenImage]);
 
   const scrollToSection = (id: string): void => {
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
     setMenuOpen(false);
   };
 
-  const ctrlImages: string[] = [
-    "/images/ctrl-main.png",
-    "/images/ctrl-checkout.png",
-    "/images/ctrl-stripe.png",
+  const hydroImages: ProjectImage[] = [
+    { src: "/images/hydro-main.png", alt: "HydroScript main dashboard" },
+    { src: "/images/hydro-login.png", alt: "HydroScript login page" },
   ];
-  let ctrlIndex = 0;
 
-  const swipeLeft = (): void => {
-    ctrlIndex = (ctrlIndex - 1 + ctrlImages.length) % ctrlImages.length;
-    (document.querySelector(".project-photo-ctrl") as HTMLImageElement).src =
-      ctrlImages[ctrlIndex];
-  };
-
-  const swipeRight = (): void => {
-    ctrlIndex = (ctrlIndex + 1) % ctrlImages.length;
-    (document.querySelector(".project-photo-ctrl") as HTMLImageElement).src =
-      ctrlImages[ctrlIndex];
-  };
+  const ticketImages: ProjectImage[] = [
+    { src: "/images/ticket-main.png", alt: "Main ticket page" },
+    { src: "/images/ticket-checkout.png", alt: "Checkout process" },
+    { src: "/images/ticket-payment.png", alt: "Payment completion" },
+  ];
 
   return (
     <>
@@ -137,8 +220,8 @@ function App() {
             <p>Python</p>
           </div>
           <div className="items">
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-original-wordmark.svg" />
-            <p>Java</p>
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/fastapi/fastapi-original.svg" />
+            <p>FastAPI</p>
           </div>
           <div className="items">
             <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg" />
@@ -149,12 +232,20 @@ function App() {
             <p>JavaScript</p>
           </div>
           <div className="items">
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/fastapi/fastapi-original.svg" />
-            <p>FastAPI</p>
-          </div>
-          <div className="items">
             <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original-wordmark.svg" />
             <p>React.js</p>
+          </div>
+          <div className="items">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original-wordmark.svg" />
+            <p>PostgreSQL</p>
+          </div>
+          <div className="items">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/amazonwebservices/amazonwebservices-original-wordmark.svg" />
+            <p>AWS</p>
+          </div>
+          <div className="items">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/sqlalchemy/sqlalchemy-original-wordmark.svg" />
+            <p>SQLAlchemy</p>
           </div>
           <div className="items">
             <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/express/express-original-wordmark.svg" />
@@ -165,12 +256,16 @@ function App() {
             <p>Node.js</p>
           </div>
           <div className="items">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original-wordmark.svg" />
+            <p>MySQL</p>
+          </div>
+          <div className="items">
             <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mongodb/mongodb-original-wordmark.svg" />
             <p>MongoDB</p>
           </div>
           <div className="items">
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original-wordmark.svg" />
-            <p>MySQL</p>
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-original-wordmark.svg" />
+            <p>Java</p>
           </div>
           <div className="items">
             <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original-wordmark.svg" />
@@ -179,30 +274,6 @@ function App() {
           <div className="items">
             <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original-wordmark.svg" />
             <p>CSS3</p>
-          </div>
-          <div className="items">
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original-wordmark.svg" />
-            <p>Git</p>
-          </div>
-          <div className="items">
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/amazonwebservices/amazonwebservices-original-wordmark.svg" />
-            <p>AWS</p>
-          </div>
-          <div className="items">
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/gitlab/gitlab-original.svg" />
-            <p>GitLab CI/CD</p>
-          </div>
-          <div className="items">
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/flask/flask-original.svg" />
-            <p>Flask</p>
-          </div>
-          <div className="items">
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/spring/spring-original-wordmark.svg" />
-            <p>Spring Boot</p>
-          </div>
-          <div className="items">
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-original-wordmark.svg" />
-            <p>Docker</p>
           </div>
         </div>
       </div>
@@ -220,12 +291,24 @@ function App() {
             </div>
             <ul className="exp-bullets">
               <li>
-                Implementing frontend and backend features for a storefront
-                platform for buying and selling AI training data.
+                Architecting a real-time collaborative annotation editor over
+                WebSockets, backed by FastAPI and PostgreSQL, with live
+                presence, shared annotation rendering, throttled autosave, and
+                conflict resolution via annotation-level locking.
               </li>
               <li>
-                Developing a collaborative annotation editor prototype using
-                WebSockets and FastAPI.
+                Implemented frontend features for an AI training data platform,
+                including metadata-driven image boundary rendering with
+                axis-based fallback for missing metadata.
+              </li>
+              <li>
+                Validated changes across the codebase with Playwright end-to-end
+                and Vitest unit tests, covering regression cases in existing
+                TypeScript and React logic.
+              </li>
+              <li>
+                Added server-side validation rejecting incompatible annotation
+                types before dataset ingestion.
               </li>
             </ul>
             <div className="exp-tags">
@@ -233,6 +316,8 @@ function App() {
               <span className="tag">FastAPI</span>
               <span className="tag">WebSockets</span>
               <span className="tag">TypeScript</span>
+              <span className="tag">React</span>
+              <span className="tag">PostgreSQL</span>
             </div>
           </div>
           <div className="exp-card">
@@ -256,10 +341,6 @@ function App() {
                 Refactored legacy Node.js Lambda functions into Python, and
                 improved reliability with pytest-based unit tests.
               </li>
-              <li>
-                Automated infrastructure using AWS CloudFormation and
-                implemented CI/CD pipelines using GitLab CI/CD.
-              </li>
             </ul>
             <div className="exp-tags">
               <span className="tag">Java</span>
@@ -273,45 +354,47 @@ function App() {
       <div className="projects" id="projects">
         <h1>Projects</h1>
         <h2>What I've built</h2>
-        <div className="proj-grid">
-          <div className="card">
-            <div className="card-content">
-              <h3>CtrlAltSwap</h3>
-              <p>
-                A full-stack e-commerce platform for buying used computer parts
-                and accessories.
-              </p>
-              <div className="project-images">
-                <img
-                  className="arrow"
-                  onClick={swipeLeft}
-                  src="/images/left-arrow.png"
-                  alt="Left Arrow"
-                />
-                <img
-                  className="project-photo-ctrl"
-                  src="/images/ctrl-main.png"
-                  alt="CtrlAltSwap project image"
-                />
-                <img
-                  className="arrow"
-                  onClick={swipeRight}
-                  src="/images/right-arrow.png"
-                  alt="Right Arrow"
-                />
-              </div>
-              <p>
-                <strong>Tech Stack: </strong>React.js, Express.js, MongoDB,
-                Node.js
-              </p>
-            </div>
-            <a
-              href="https://github.com/barrettlarson/ctrl-alt-swap"
-              className="code-btn"
-            >
-              View On GitHub
-            </a>
-          </div>
+        <div className="project">
+          <h3>HydroScript</h3>
+          <p>
+            A full-stack pool/spa automation system for Jandy iAqualink
+            controller.
+          </p>
+          {hydroImages.length > 0 && (
+            <ProjectCarousel
+              images={hydroImages}
+              onImageClick={setFullscreenImage}
+            />
+          )}
+          <p>
+            <strong>Tech Stack: </strong>Python, FastAPI, TypeScript React.js
+          </p>
+          <a
+            href="https://github.com/barrettlarson/hydro-script"
+            className="code-btn"
+          >
+            View On GitHub
+          </a>
+        </div>
+        <div className="project">
+          <h3>Fraternity Formals Ticket Platform</h3>
+          <p>
+            A complete ticket-purchasing platform as a fee-free alternative to
+            third-party ticketing services.
+          </p>
+          <ProjectCarousel
+            images={ticketImages}
+            onImageClick={setFullscreenImage}
+          />
+          <p>
+            <strong>Tech Stack: </strong>React.js, Express.js, MongoDB, Node.js
+          </p>
+          <a
+            href="https://github.com/barrettlarson/formals-tix"
+            className="code-btn"
+          >
+            View On GitHub
+          </a>
         </div>
       </div>
       <div className="interests" id="interests">
@@ -369,6 +452,11 @@ function App() {
           </div>
         </div>
       </div>
+      {fullscreenImage && (
+        <div className="lightbox" onClick={() => setFullscreenImage(null)}>
+          <img src={fullscreenImage.src} alt={fullscreenImage.alt} />
+        </div>
+      )}
       <footer>
         <p>© 2026 Barrett Larson · Built with React</p>
       </footer>
