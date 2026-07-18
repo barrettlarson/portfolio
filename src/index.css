@@ -486,7 +486,10 @@ main h1 {
 
 .carousel {
   width: 100%;
-  margin: 1rem 0;
+  /* screenshots are ~1.88:1 — cap width by viewport height so the
+     title, image, and dots all fit on screen at once */
+  max-width: calc((100vh - 320px) * 1.88);
+  margin: 1rem auto;
 }
 
 .carousel-viewport {
@@ -720,7 +723,7 @@ footer p {
   }
 
   .carousel {
-    margin: 0.5rem 0;
+    margin: 0.5rem auto;
   }
 
   .carousel-viewport,
